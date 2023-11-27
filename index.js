@@ -5,12 +5,18 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const crypto = require('crypto');
 
+const authMiddleware=require("./auth/authMiddleware");
+const authRoutes=require("./auth/authRoutes");
+
 const app = express();
 
 // View engine setup
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+
+app.use(authMiddleware);
+app.use(authRoutes);
 // Database connection setup
 const connection = require("./database/connection");
 connection.once('open', function () {

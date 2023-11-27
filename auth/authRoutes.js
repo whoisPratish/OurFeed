@@ -7,9 +7,20 @@ const users = [
     { id: 2, username: "user2", password: "password2" },
 ];
 
+
+router.get("/", (req, res) => {
+
+    try {
+        res.render("/login");
+    } catch (error) {
+        console.log(error);
+    }
+  
+});
+
 // Login route
 router.get("/login", (req, res) => {
-    res.render("auth/login", { error: req.flash("error") });
+    res.render("views/login", { error: req.flash("error") });
 });
 
 router.post("/login", (req, res) => {
@@ -26,13 +37,13 @@ router.post("/login", (req, res) => {
     } else {
         // Use flash to display an error message on unsuccessful login
         req.flash("error", "Invalid username or password");
-        res.redirect("/auth/login");
+        res.redirect("/login");
     }
 });
 
 // Register route
 router.get("/register", (req, res) => {
-    res.render("auth/register");
+    res.render("views/register");
 });
 
 router.post("/register", (req, res) => {

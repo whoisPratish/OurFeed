@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
       return next();
     } else {
       // User is not authenticated, redirect to login page
-      return res.redirect("/auth/login");
+      return res.redirect("/login");
     }
   };
   

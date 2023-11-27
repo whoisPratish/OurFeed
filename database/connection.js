@@ -14,10 +14,7 @@ require("dotenv").config();
 // URI from the .env file
 const uri = process.env.URI;
 
-mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+mongoose.connect(uri);
 
 // Export the connection object
 module.exports = mongoose.connection;
