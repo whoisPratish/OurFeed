@@ -1,12 +1,11 @@
-const authMiddleware = (req, res, next) => {
-    // Check if the user is authenticated
-    if (req.session.user) {
-        // User is authenticated, proceed to the next middleware or route
-        next();
+// auth/authMiddleware.js
+module.exports = function(req, res, next) {
+    if (req.isAuthenticated()) {
+      // User is authenticated, proceed to the next middleware or route handler
+      return next();
     } else {
-        // User is not authenticated, redirect to login page
-        res.redirect("/auth/login");
+      // User is not authenticated, redirect to login page
+      return res.redirect("/auth/login");
     }
-};
-
-module.exports = authMiddleware;
+  };
+  
