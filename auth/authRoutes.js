@@ -26,7 +26,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
 
-    // Simple authentication logic
+    //  authentication logic
     const user = users.find((u) => u.username === username && u.password === password);
 
     if (user) {

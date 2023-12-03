@@ -23,11 +23,11 @@ connection.once('open', function () {
     console.log('Database connected successfully');
 });
 
-// Dummy user for testing purposes (replace with your actual user model)
+// DUmmy user for testing purposes 
 const dummyUser = {
     id: 1,
     username: 'testuser',
-    password: 'testpassword' // Hash this in a real application
+    password: 'testpassword' 
 };
 
 // Middleware setup
@@ -46,7 +46,7 @@ app.use(passport.session());
 // Passport local strategy for login
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        // Replace this with your actual authentication logic
+        //  authentication logic
         if (username === dummyUser.username && password === dummyUser.password) {
             return done(null, dummyUser);
         } else {
@@ -62,7 +62,7 @@ passport.serializeUser(function(user, done) {
 
 // Deserialize user information from session storage
 passport.deserializeUser(function(id, done) {
-    // Replace this with your logic to fetch user information from the database
+// fetching user
     if (id === dummyUser.id) {
         done(null, dummyUser);
     } else {
